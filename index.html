@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiLoTech App</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <div id="sidebar" class="sidebar">
+
+    <button onclick="closeSidebar()">✖</button>
+
+    <a href="#" onclick="showSection('home-page'); closeSidebar(); return false;">
+      Home
+    </a>
+
+    <a href="#" onclick="showSection('dashboard-page'); closeSidebar(); return false;">
+      Dashboard
+    </a>
+
+    <a href="#" onclick="showSection('chat-page'); closeSidebar(); return false;">
+      Chat
+    </a>
+
+    <a href="#" onclick="showSection('profile-page'); closeSidebar(); return false;">
+      Profile
+    </a>
+
+    <a href="#" onclick="showSection('settings-page'); closeSidebar(); return false;">
+      Settings
+    </a>
+
+  </div>
+
+  <!-- PARTICLES -->
+  <div id="particles"></div>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <h1>MiLo-Tech App</h1>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div id="main-content">
+    <!-- AUTH PAGE -->
+<div id="auth-page">
+
+  <div class="auth-header">
+    <h1>MiLoTech App</h1>
+    <p>Welcome to MiLoTech</p>
+  </div>
+
+  <!-- SIGNUP -->
+
+  <section id="signup-page">
+
+    <h2>Create Account</h2>
+
+    <input
+      type="text"
+      id="signup-phone-number"
+      placeholder="Phone Number">
+
+    <br><br>
+
+    <input
+type="password"
+id="signup-password"
+placeholder="Password">
+
+<br><br>
+
+<button onclick="toggleSignupPassword()">
+  Show / Hide Password
+</button>
+
+<br><br>
+
+<button onclick="signupMessage()">
+  Sign Up
+</button>
+      
+      
+     
+      
+
+    
+
+    
+      
+    
+
+  </section>
+
+  <!-- LOGIN -->
+
+  <section id="login-page">
+
+    <h2>Login</h2>
+
+    <input
+      type="text"
+      id="login-phone-number"
+      placeholder="Phone Number">
+
+    <br><br>
+
+    <input
+      type="password"
+      id="login-password"
+      placeholder="Password">
+
+    <br><br>
+
+    <button onclick="togglePassword()">
+      Show / Hide Password
+    </button>
+
+    <br><br>
+
+    <button onclick="loginMessage()">
+      Login
+    </button>
+
+  </section>
+
+</div>
+<!-- APP PAGE -->
+<div id="app-page">
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+
+    <button onclick="openSidebar()">☰</button>
+
+    <h1>MiLoTech App</h1>
+
+  </div>
+
+  <!-- HOME PAGE -->
+  <section id="home-page">
+
+    <h2>Home</h2>
+    <button onclick="toggleTheme()" id="home-theme-button">
+  🌙 Dark Mode
+</button>
+    <div class="slider-container">
+
+      <button class="prev" onclick="moveSlide(-1)">❮</button>
+
+      <div class="slider" id="slider">
+
+        <img src="https://i.ibb.co/6RLm3WX7/Screenshot-20260703-133732-Gallery.jpg">
+
+        <img src="https://i.ibb.co/6Rf9FYxz/Screenshot-20260703-133840-Gallery.jpg">
+
+        <img src="https://i.ibb.co/LDCf8T0t/30ad3d-f5a529cb5b1b43fd9e4a59dd876107e1-mv2.webp">
+
+      </div>
+
+      <button class="next" onclick="moveSlide(1)">❯</button>
+
+    </div>
+
+  </section>
+    <!-- PROFILE PAGE -->
+
+  <section id="profile-page" class="profile">
+
+    <h2>User Profile</h2>
+
+    <img id="profile-image"
+    src="https://i.ibb.co/4pDNDk1/avatar.png">
+
+    <br><br>
+
+    <input
+    type="file"
+    id="upload-image"
+    accept="image/*">
+
+    <h3 id="profile-phone">
+
+      No User Logged In
+
+    </h3>
+
+    <div class="status-container">
+
+      <div id="status-dot"
+      class="offline-dot"></div>
+
+      <p id="profile-status">
+
+        Offline
+
+      </p>
+
+    </div>
+
+    <br>
+
+    <input
+    type="text"
+    id="edit-phone"
+    placeholder="New Phone Number">
+
+    <br><br>
+
+    <button onclick="updateProfile()">
+
+      Update Profile
+
+    </button>
+
+    <br><br>
+
+    <button onclick="logoutUser()">
+
+      Logout
+
+    </button>
+
+  </section>
+    <!-- DASHBOARD PAGE -->
+
+  <section id="dashboard-page" class="dashboard">
+
+    <h2>Dashboard</h2>
+
+    <div class="dashboard-container">
+
+      <div class="dashboard-card">
+
+        <h1 id="total-users">0</h1>
+
+        <p>Total Users</p>
+
+      </div>
+
+      <div class="dashboard-card">
+
+        <h1 id="online-users">0</h1>
+
+        <p>Online Users</p>
+
+      </div>
+
+      <div class="dashboard-card">
+
+        <h1 id="total-messages">0</h1>
+
+<p>Total Messages</p>
+
+        
+
+      </div>
+
+    </div>
+
+  </section>
+    <!-- CHAT PAGE -->
+
+  <section id="chat-page" class="chat-section">
+
+    <h2>Live Chat</h2>
+    <div id="users-list">
+  <h3>Users</h3>
+</div>
+    <div id="private-chat-header"></div>
+
+    <div id="chat-box" class="chat-box">
+
+      <div id="typing-indicator" class="typing-bubble" style="display:none;">
+
+  Typing
+  <span class="dots">...</span>
+
+</div>
+
+    </div>
+
+    <br>
+
+    <div class="chat-input-area">
+
+      <input
+      type="text"
+      id="chat-input"
+      placeholder="Type a message...">
+
+      <button onclick="sendMessage()">
+
+        Send
+
+      </button>
+
+    </div>
+
+    <br>
+
+    <div class="emoji-bar">
+
+      <span onclick="addEmoji('😀')">😀</span>
+
+      <span onclick="addEmoji('🔥')">🔥</span>
+
+      <span onclick="addEmoji('❤️')">❤️</span>
+
+      <span onclick="addEmoji('😂')">😂</span>
+
+      <span onclick="addEmoji('🚀')">🚀</span>
+
+    </div>
+
+    <br>
+
+    <button onclick="clearChat()">
+
+      Clear Chat
+
+    </button>
+
+    <button onclick="startVoice()">
+
+      🎤 Speech
+
+    </button>
+    <button id="voiceNoteBtn">🎵 Voice Note</button>
+    <br><br>
+
+    <input
+    type="file"
+    id="chat-image"
+    accept="image/*">
+
+    <button onclick="sendImage()">
+
+      Send Image
+
+    </button>
+
+  </section>
+    <!-- SETTINGS PAGE -->
+
+  <section id="settings-page">
+
+    <h2>Settings</h2>
+
+    <button onclick="toggleTheme()" id="theme-button">
+      🌙 Dark Mode
+    </button>
+
+  </section>
+
+</div>
+<!-- END OF APP PAGE -->
+
+<!-- NOTIFICATION -->
+
+<div id="notification" class="notification">
+
+  Notification
+
+</div>
+
+<audio id="typing-sound">
+
+  <source
+  src="https://www.soundjay.com/mechanical/keyboard-1.mp3"
+  type="audio/mpeg">
+
+</audio>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  query,
+  where,
+  updateDoc,
+  doc,
+  setDoc,
+  Timestamp,
+  orderBy,
+  onSnapshot,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDgkFWwkYRsEr0DXV0RoXwIcGDkBiFD90I",
+  authDomain: "milotech-app-104c4.firebaseapp.com",
+  projectId: "milotech-app-104c4",
+  storageBucket: "milotech-app-104c4.firebasestorage.app",
+  messagingSenderId: "162762259",
+  appId: "1:162762259:web:25c4f195f83ac0b895b9e6",
+  measurementId: "G-1SZJPL0ZW2"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.db = db;
+window.collection = collection;
+window.addDoc = addDoc;
+window.getDocs = getDocs;
+window.query = query;
+window.where = where;
+window.updateDoc = updateDoc;
+window.doc = doc;
+window.setDoc = setDoc;
+window.Timestamp = Timestamp;
+window.orderBy = orderBy;
+window.onSnapshot = onSnapshot;
+window.serverTimestamp = serverTimestamp;
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
